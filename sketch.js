@@ -12,9 +12,6 @@ var gameState = "onSling";
 var bg = "sprites/bg1.png";
 var score = 0;
 
-function preload() {
-    getBackgroundImg();
-}
 
 function setup(){
     var canvas = createCanvas(1200,400);
@@ -47,8 +44,8 @@ function setup(){
 }
 
 function draw(){
-    if(backgroundImg)
-        background(backgroundImg);
+ 
+    background("black"); 
     
         noStroke();
         textSize(35)
@@ -100,20 +97,3 @@ function keyPressed(){
     }
 }
 
-async function getBackgroundImg(){
-    var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
-    var responseJSON = await response.json();
-
-    var datetime = responseJSON.datetime;
-    var hour = datetime.slice(11,13);
-    
-    if(hour>=0600 && hour<=1900){
-        bg = "sprites/bg1.png";
-    }
-    else{
-        bg = "sprites/bg2.jpg";
-    }
-
-    backgroundImg = loadImage(bg);
-    console.log(backgroundImg);
-}
